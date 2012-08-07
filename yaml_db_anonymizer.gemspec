@@ -3,8 +3,8 @@ require File.expand_path('../lib/yaml_db/anonymizer/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Thomas Hollstegge"]
-  gem.email         = ["thomas.hollstegge@zweitag.de"]
-  gem.description   = %q{A database dumper with anonymization}
+  gem.email         = ["thomas@hollstegge.net"]
+  gem.description   = %q{Dumps anonymized database contents to .yml files}
   gem.summary       = %q{A database dumper with anonymization}
   gem.homepage      = "https://github.com/Tho85/yaml_db_anonymizer"
 

@@ -27,6 +27,7 @@ describe YamlDb::Anonymizer do
 
   context 'export' do
     before do
+      # Taken from yaml_db specs
       silence_warnings { ActiveRecord::Base = mock('ActiveRecord::Base').as_null_object }
       ActiveRecord::Base.stub(:connection).and_return(stub('connection').as_null_object)
       ActiveRecord::Base.connection.stub!(:tables).and_return([ 'mytable', 'schema_info', 'schema_migrations' ])
@@ -36,7 +37,8 @@ describe YamlDb::Anonymizer do
       YamlDb::Utils.stub!(:quote_table).with('mytable').and_return('mytable')
     end
 
-    before(:each) do   
+    before(:each) do
+      # Taken from yaml_db specs
       File.stub!(:new).with('dump.yml', 'w').and_return(StringIO.new)
       @io = StringIO.new
     end
