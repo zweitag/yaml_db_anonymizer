@@ -20,10 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-1. Specify the database fields to anonymize, e.g. in
+* Specify the database fields to anonymize, e.g. in
    `config/initializers/yaml_db_anonymizer.rb`:
 
-    ```ruby
+```ruby
 YamlDb::Anonymizer.define do
   table :users
     remove :encrypted_password
@@ -35,13 +35,13 @@ YamlDb::Anonymizer.define do
     truncate
   end
 end
-    ```
+```
 
-2. Run `rake db:data:dump_anonymized` on your server. This creates an anonymized dump in `db/data.yml`
+* Run `rake db:data:dump_anonymized` on your server. This creates an anonymized dump in `db/data.yml`
 
-3. Copy `db/data.yml` to your local machine
+* Copy `db/data.yml` to your local machine
 
-4. Run `rake db:data:load` on your local machine.
+* Run `rake db:data:load` on your local machine.
 
 ## Todo
 
