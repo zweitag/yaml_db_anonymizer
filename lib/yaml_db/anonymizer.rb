@@ -1,4 +1,5 @@
 require 'yaml_db'
+require 'yaml_db/anonymizer/railtie'
 
 module YamlDb
   module Anonymizer
