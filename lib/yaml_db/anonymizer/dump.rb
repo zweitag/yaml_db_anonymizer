@@ -3,7 +3,9 @@ module YamlDb
     class Dump < ::YamlDb::Dump
 
       def self.dump_table_records(io, table)
+        return super(io, table) unless Anonymizer.definition.is_a? Hash
         return if Anonymizer.definition[table.to_s] == :truncate
+
         table_record_header(io)
 
         column_names = table_column_names(table)
@@ -23,7 +25,7 @@ module YamlDb
       end
 
       def self.dump_table_columns(io, table)
-        super(io, table) unless Anonymizer.definition[table.to_s] == :truncate
+        super(io, table) unless Anonymizer.definition.is_a?(Hash) && Anonymizer.definition[table.to_s] == :truncate
       end
 
     end

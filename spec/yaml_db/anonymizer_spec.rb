@@ -87,5 +87,24 @@ EOYAML
       end
     end
   end
+
+  context 'fallback' do
+    let(:io)    { double('io') }
+    let(:table) { double('table') }
+
+    before do
+      YamlDb::Anonymizer.definition = nil
+    end
+
+    it 'falls back to YamlDb::Dump.dump_table_records if definition is missing' do
+      YamlDb::Dump.should_receive(:dump_table_records).with(io, table)
+      YamlDb::Anonymizer::Dump.dump_table_records(io, table)
+    end
+
+    it 'falls back to YamlDb::Dump.dump_table_columns if definition is missing' do
+      YamlDb::Dump.should_receive(:dump_table_columns).with(io, table)
+      YamlDb::Anonymizer::Dump.dump_table_columns(io, table)
+    end
+  end
 end
 
