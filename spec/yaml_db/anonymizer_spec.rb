@@ -8,6 +8,7 @@ describe YamlDb::Anonymizer do
           remove :a
           replace :b, with: 0
           replace :c, with: lambda { |val| "Anonymized #{val}" }
+          replace :d, with: lambda { "Anonymized value" }
         end
       end
     end
@@ -22,6 +23,10 @@ describe YamlDb::Anonymizer do
 
     it "should anonymize with blocks" do
       YamlDb::Anonymizer.anonymize(:mytable, :c, "bar").should == "Anonymized bar"
+    end
+
+    it "should anonymize with blocks" do
+      YamlDb::Anonymizer.anonymize(:mytable, :d, "bar").should == "Anonymized value"
     end
   end
 

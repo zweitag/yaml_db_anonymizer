@@ -36,7 +36,11 @@ module YamlDb
       def anonymize(table, column, value)
         return value unless self.definition.key?(table.to_s) and self.definition[table.to_s].key?(column.to_s)
         block_or_value = self.definition[table.to_s][column.to_s]
-        block_or_value.is_a?(Proc) ? block_or_value.call(value) : block_or_value
+        if block_or_value.is_a?(Proc)
+          block_or_value.arity == 1 ? block_or_value.call(value) : block_or_value.call
+        else
+          block_or_value
+        end
       end
     end
   end
