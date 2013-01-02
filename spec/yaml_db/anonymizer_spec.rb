@@ -48,6 +48,12 @@ describe YamlDb::Anonymizer do
       @io = StringIO.new
     end
 
+    context 'tables' do
+      it 'dumps rails schema tables' do
+        YamlDb::Anonymizer::Dump.tables.should == %w(mytable schema_info schema_migrations)
+      end
+    end
+
     context 'truncated' do
       before do
         YamlDb::Anonymizer.define do

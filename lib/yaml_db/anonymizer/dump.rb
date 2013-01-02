@@ -28,6 +28,10 @@ module YamlDb
         super(io, table) unless Anonymizer.definition.is_a?(Hash) && Anonymizer.definition[table.to_s] == :truncate
       end
 
+      def self.tables
+        ActiveRecord::Base.connection.tables
+      end
+
     end
 
   end
