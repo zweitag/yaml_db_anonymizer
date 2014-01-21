@@ -1,6 +1,6 @@
 # YamlDb::Anonymizer
 
-Dumps anonymized database contents to a YAML file. This is useful if you want to develop Rails applications with near-live data from your server. Based on [yaml_db](https://github.com/ludicast/yaml_db).
+Dumps anonymized database contents to a YAML file. This is useful if you want to develop Rails applications with near-live data from your server. Based on [yaml_db](https://github.com/zweitag/yaml_db).
 
 (c) 2012 by Thomas Hollstegge
 
