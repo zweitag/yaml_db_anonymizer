@@ -3,9 +3,12 @@ require 'yaml_db/anonymizer/railtie'
 
 module YamlDb
   module Anonymizer
-    autoload :Dump,    'yaml_db/anonymizer/dump'
-    autoload :Helper,  'yaml_db/anonymizer/helper'
-    autoload :VERSION, 'yaml_db/anonymizer/version'
+    format_class = ENV['class'] || "YamlDb::Anonymizer::Helper"
+    format_module = format_class.split('::').first.underscore
+
+    autoload :Dump,    "#{format_module}/anonymizer/dump"
+    autoload :Helper,  "#{format_module}/anonymizer/helper"
+    autoload :VERSION, "#{format_module}/anonymizer/version"
 
     class << self
       attr_accessor :definition

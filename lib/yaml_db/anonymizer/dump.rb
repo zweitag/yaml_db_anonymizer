@@ -12,13 +12,10 @@ module YamlDb
 
         each_table_page(table) do |records|
           rows = SerializationHelper::Utils.unhash_records(records, column_names)
-          records_anonymized = records.map do |record|
-            # FIXME Why isn't there a map_with_index?
-            record_anonymized = []
-            record.each_with_index do |value, i|
-              record_anonymized << Anonymizer.anonymize(table, column_names[i], value)
+          records_anonymized = rows.map do |record|
+            record.each_with_index.map do |value, i|
+              Anonymizer.anonymize(table, column_names[i], value)
             end
-            record_anonymized
           end
           io.write(YamlDb::Utils.chunk_records(records_anonymized))
         end
@@ -29,9 +26,12 @@ module YamlDb
       end
 
       def self.tables
-        ActiveRecord::Base.connection.tables
+        ActiveRecord::Base.connection.tables - tables_to_truncate
       end
 
+      def self.tables_to_truncate
+        Anonymizer.definition.select {|table_name, options| options == :truncate }.keys
+      end
     end
 
   end
