@@ -26,9 +26,12 @@ module YamlDb
       end
 
       def self.tables
-        ActiveRecord::Base.connection.tables
+        ActiveRecord::Base.connection.tables - tables_to_truncate
       end
 
+      def self.tables_to_truncate
+        Anonymizer.definition.select {|table_name, options| options == :truncate }.keys
+      end
     end
 
   end
