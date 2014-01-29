@@ -2,6 +2,8 @@
 
 Dumps anonymized database contents to a YAML file. This is useful if you want to develop Rails applications with near-live data from your server. Based on [yaml_db](https://github.com/zweitag/yaml_db).
 
+JSON is supported as an alternative serialization format. Set the environment variable `class=JsonDb::Anonymize::Helper` in order to use it.
+
 (c) 2012 by Thomas Hollstegge
 
 ## Installation
