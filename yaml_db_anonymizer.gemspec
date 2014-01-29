@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = YamlDb::Anonymizer::VERSION
 
-  gem.add_dependency 'yaml_db_with_schema_tables', '~ 0.2.5'
+  gem.add_dependency 'yaml_db_with_schema_tables', '~> 0.3.0'
 
   gem.add_development_dependency 'rspec', '~> 2.11.0'
   gem.add_development_dependency 'rails', '~> 3.2'
