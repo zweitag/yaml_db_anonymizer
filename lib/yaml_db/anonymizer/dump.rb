@@ -12,7 +12,7 @@ module YamlDb
 
         each_table_page(table) do |records|
           rows = SerializationHelper::Utils.unhash_records(records, column_names)
-          records_anonymized = records.map do |record|
+          records_anonymized = rows.map do |record|
             # FIXME Why isn't there a map_with_index?
             record_anonymized = []
             record.each_with_index do |value, i|
