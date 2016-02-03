@@ -2,7 +2,7 @@
 
 Dumps anonymized database contents to a YAML file. This is useful if you want to develop Rails applications with near-live data from your server. Based on [yaml_db](https://github.com/zweitag/yaml_db).
 
-JSON is supported as an alternative serialization format. Set the environment variable `class=JsonDb::Anonymizer::Helper` in order to use it.
+JSON and CSV are supported as alternative serialization formats. Set the environment variable `class=JsonDb::Anonymizer::Helper` or `class=CsvDb::Anonymizer::Helper` respectively in order to use them.
 
 (c) 2012 by Thomas Hollstegge
 
